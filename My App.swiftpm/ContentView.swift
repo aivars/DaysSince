@@ -2,24 +2,27 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var orderDate: Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let someDateTime = formatter.date(from: "2021/10/20 10:31")
-        return someDateTime!
-    }
+    @AppStorage("orderDate") private var orderDate = Date()
+    @AppStorage("textmessage") private var textmessage = "Please configure message and date in settings"
+    @State var image = ImageManager.shared.load()
     
     var body: some View {
-        VStack {
-            Image("Order", bundle: nil)
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.accentColor)
-                .frame(width: 300, height: 300)
-            
-            Text("\(Date().daysSinceDate(orderDate)) days since I ordered M1 Pro")
-                .padding()
-                .font(.title3)
+        NavigationView{
+            VStack {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.accentColor)
+                    .frame(width: 300, height: 300)
+                
+                Text("\(Date().daysSinceDate(orderDate)) \(textmessage)")
+                    .padding()
+                    .font(.title3)
+                
+                NavigationLink("Settings") { 
+                    Settings(date: $orderDate, text: $textmessage, image: $image)
+                }
+            }
         }
     }
 }
