@@ -7,6 +7,8 @@ struct Settings: View {
     @State private var isShowPhotoLibrary = false
     @Binding var image: UIImage
     
+    
+    
     var body: some View {
         VStack {
             Image(uiImage: image)

@@ -14,9 +14,10 @@ struct ContentView: View {
                     .scaledToFit()
                     .foregroundColor(.accentColor)
                     
-                Text("\(Date().daysSinceDate(orderDate))")
+                Text(Date().daysSinceDate(orderDate) >= 0 ? "\(Date().daysSinceDate(orderDate))" : "Selected date is in the future")
+                    .multilineTextAlignment(.center)
                     .padding()
-                    .font(.system(size: 60))
+                    .font(.largeTitle)
                 
                 Text(textmessage)
                     .padding()

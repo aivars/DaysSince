@@ -19,7 +19,7 @@ let package = Package(
             bundleIdentifier: "com.aivarsmeijers.DaysSince",
             teamIdentifier: "UDP9QHRJQB",
             displayVersion: "1.0",
-            bundleVersion: "6",
+            bundleVersion: "9",
             iconAssetName: "AppIcon",
             accentColorAssetName: "AccentColor",
             supportedDeviceFamilies: [
