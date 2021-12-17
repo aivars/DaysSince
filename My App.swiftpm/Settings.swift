@@ -21,7 +21,7 @@ struct Settings: View {
                     Image(systemName: "photo")
                         .font(.system(size: 20))
                     
-                    Text("Photo library")
+                    Text("Select picture")
                         .font(.headline)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
@@ -31,9 +31,11 @@ struct Settings: View {
                 .padding(.horizontal)
             }
             
-            DatePicker("Since Date", selection: $date, displayedComponents: [.date])
-            
-            TextField("Text", text: $text)
+            DatePicker("Select Date", selection: $date, displayedComponents: [.date])
+            HStack {
+                Text("Description: ")
+                TextField("Text", text: $text)
+            }
         }
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(selectedImage: $image)

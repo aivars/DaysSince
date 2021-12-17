@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     
     @AppStorage("orderDate") private var orderDate = Date()
-    @AppStorage("textmessage") private var textmessage = "Please configure message and date in settings"
+    @AppStorage("textmessage") private var textmessage = "Days since selected date"
     @State var image = ImageManager.shared.load()
     
     var body: some View {
@@ -13,13 +13,17 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(.accentColor)
-                    .frame(width: 300, height: 300)
-                
-                Text("\(Date().daysSinceDate(orderDate)) \(textmessage)")
+                    
+                Text("\(Date().daysSinceDate(orderDate))")
                     .padding()
-                    .font(.title3)
+                    .font(.system(size: 60))
                 
-                NavigationLink("Settings") { 
+                Text(textmessage)
+                    .padding()
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                
+                NavigationLink("Change Data") { 
                     Settings(date: $orderDate, text: $textmessage, image: $image)
                 }
             }
